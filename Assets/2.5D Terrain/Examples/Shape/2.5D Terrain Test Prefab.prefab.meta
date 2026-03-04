@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d9f73b37ac7276b47b40c2f33021aadd
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220783
+  packageName: '2.5D Terrain: 2D/3D Level Platform Generator for Side-Scrollers'
+  packageVersion: 2.2.0
+  assetPath: Assets/2.5D Terrain/Examples/Shape/2.5D Terrain Test Prefab.prefab
+  uploadId: 771308

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f9cf588a6ce289248825534e81be1558
+AssemblyDefinitionReferenceImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220783
+  packageName: '2.5D Terrain: 2D/3D Level Platform Generator for Side-Scrollers'
+  packageVersion: 2.2.0
+  assetPath: Assets/2.5D Terrain/Scripts/BezierSplines/Editor/BezierSplineEditorAsmRef.asmref
+  uploadId: 771308

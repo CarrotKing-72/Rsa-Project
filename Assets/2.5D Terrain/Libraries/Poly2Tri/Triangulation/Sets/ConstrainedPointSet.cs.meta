@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 6c3f170b44eb0354aa76a8c41daf1d63
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220783
+  packageName: '2.5D Terrain: 2D/3D Level Platform Generator for Side-Scrollers'
+  packageVersion: 2.2.0
+  assetPath: Assets/2.5D Terrain/Libraries/Poly2Tri/Triangulation/Sets/ConstrainedPointSet.cs
+  uploadId: 771308

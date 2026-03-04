@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: c97777674943df840b41660ab9968d47
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 694205069788960503
+    second: Beatle_Slime_Shot_0
+  - first:
+      213: -5796432598923593759
+    second: Beatle_Slime_Shot_1
+  - first:
+      213: 1206770348742516472
+    second: Beatle_Slime_Shot_2
+  - first:
+      213: 7452299536649918117
+    second: Beatle_Slime_Shot_3
+  - first:
+      213: 7802240852416452895
+    second: Beatle_Slime_Shot_4
+  - first:
+      213: 7634016625386101847
+    second: Beatle_Slime_Shot_5
+  - first:
+      213: 5115029757448493587
+    second: Beatle_Slime_Shot_6
+  - first:
+      213: -4172115046769746421
+    second: Beatle_Slime_Shot_7
+  - first:
+      213: -6999156044025815423
+    second: Beatle_Slime_Shot_8
+  - first:
+      213: 4539488641590503678
+    second: Beatle_Slime_Shot_9
+  - first:
+      213: -5589841295216080314
+    second: Beatle_Slime_Shot_10
+  - first:
+      213: -2354470586303519405
+    second: Beatle_Slime_Shot_11
+  - first:
+      213: -5536089609086943318
+    second: Beatle_Slime_Shot_12
+  - first:
+      213: 8154116519749847483
+    second: Beatle_Slime_Shot_13
+  - first:
+      213: -2423805030050646322
+    second: Beatle_Slime_Shot_14
+  - first:
+      213: -7404489278616467933
+    second: Beatle_Slime_Shot_15
+  - first:
+      213: 1575982903557280609
+    second: Beatle_Slime_Shot_16
+  - first:
+      213: 4235499405104932898
+    second: Beatle_Slime_Shot_17
+  - first:
+      213: -3297458365959710625
+    second: Beatle_Slime_Shot_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 76
+        width: 48
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f6db0a35df42a900800000000000000
+      internalID: 694205069788960503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 87
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e73aa8134fee8fa0800000000000000
+      internalID: -5796432598923593759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_2
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 87
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe954a0d3f4fb010800000000000000
+      internalID: 1206770348742516472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_3
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 87
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a693d1d1f2eb6760800000000000000
+      internalID: 7452299536649918117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f19d25c97b0274c60800000000000000
+      internalID: 7802240852416452895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_5
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 36
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75c909d8ca971f960800000000000000
+      internalID: 7634016625386101847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_6
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 54
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31a154cb67c3cf640800000000000000
+      internalID: 5115029757448493587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_7
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 35
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0e1a33487ba916c0800000000000000
+      internalID: -4172115046769746421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_8
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 46
+        width: 11
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e105c39a00ede90800000000000000
+      internalID: -6999156044025815423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_9
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 36
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef82ce74ed08ffe30800000000000000
+      internalID: 4539488641590503678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_10
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 43
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64a06df45f4ec62b0800000000000000
+      internalID: -5589841295216080314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_11
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 25
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 355e54de97d335fd0800000000000000
+      internalID: -2354470586303519405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_12
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 11
+        width: 6
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaf34adf4dbdb23b0800000000000000
+      internalID: -5536089609086943318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_13
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 0
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb985d8b5cd392170800000000000000
+      internalID: 8154116519749847483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_14
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 12
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec6b603ca2aec5ed0800000000000000
+      internalID: -2423805030050646322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_15
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 13
+        width: 6
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32680e45b38fd3990800000000000000
+      internalID: -7404489278616467933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_16
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 0
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 163de92d9140fd510800000000000000
+      internalID: 1575982903557280609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_17
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 0
+        width: 9
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22868afa44487ca30800000000000000
+      internalID: 4235499405104932898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beatle_Slime_Shot_18
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f58d45b36131d32d0800000000000000
+      internalID: -3297458365959710625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Beatle_Slime_Shot_0: 694205069788960503
+      Beatle_Slime_Shot_1: -5796432598923593759
+      Beatle_Slime_Shot_10: -5589841295216080314
+      Beatle_Slime_Shot_11: -2354470586303519405
+      Beatle_Slime_Shot_12: -5536089609086943318
+      Beatle_Slime_Shot_13: 8154116519749847483
+      Beatle_Slime_Shot_14: -2423805030050646322
+      Beatle_Slime_Shot_15: -7404489278616467933
+      Beatle_Slime_Shot_16: 1575982903557280609
+      Beatle_Slime_Shot_17: 4235499405104932898
+      Beatle_Slime_Shot_18: -3297458365959710625
+      Beatle_Slime_Shot_2: 1206770348742516472
+      Beatle_Slime_Shot_3: 7452299536649918117
+      Beatle_Slime_Shot_4: 7802240852416452895
+      Beatle_Slime_Shot_5: 7634016625386101847
+      Beatle_Slime_Shot_6: 5115029757448493587
+      Beatle_Slime_Shot_7: -4172115046769746421
+      Beatle_Slime_Shot_8: -6999156044025815423
+      Beatle_Slime_Shot_9: 4539488641590503678
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

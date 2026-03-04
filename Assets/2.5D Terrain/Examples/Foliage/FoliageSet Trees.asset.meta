@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: dd60f49bd5a41f9469fd9b90283c35db
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220783
+  packageName: '2.5D Terrain: 2D/3D Level Platform Generator for Side-Scrollers'
+  packageVersion: 2.2.0
+  assetPath: Assets/2.5D Terrain/Examples/Foliage/FoliageSet Trees.asset
+  uploadId: 771308

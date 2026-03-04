@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d38a8544ee0cf244ea66b0db7cba2e15
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220783
+  packageName: '2.5D Terrain: 2D/3D Level Platform Generator for Side-Scrollers'
+  packageVersion: 2.2.0
+  assetPath: Assets/2.5D Terrain/2.5DTerrainManual.pdf
+  uploadId: 771308

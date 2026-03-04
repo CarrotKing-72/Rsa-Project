@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d05690b67e28cf145811fdfd5cefa999
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220783
+  packageName: '2.5D Terrain: 2D/3D Level Platform Generator for Side-Scrollers'
+  packageVersion: 2.2.0
+  assetPath: Assets/2.5D Terrain/Libraries/Poly2Tri/Triangulation/Delaunay/Sweep/PointOnEdgeException.cs
+  uploadId: 771308

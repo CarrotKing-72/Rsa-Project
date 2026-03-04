@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a7628104344bd534e850aaef004473f8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220783
+  packageName: '2.5D Terrain: 2D/3D Level Platform Generator for Side-Scrollers'
+  packageVersion: 2.2.0
+  assetPath: Assets/2.5D Terrain/Libraries/Poly2Tri/Triangulation/Delaunay/Sweep/DTSweepContext.cs
+  uploadId: 771308
