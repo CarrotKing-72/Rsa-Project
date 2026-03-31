@@ -7,20 +7,22 @@ public class PathTile : MonoBehaviour
 
     [Header("Visuals")]
     public SpriteRenderer spriteRenderer;
-    public Sprite lockedSprite;    // Dirt / cracked concrete
-    public Sprite seededSprite;    // Dirt with seeds on it
-    public Sprite grownSprite;     // Grass / tree tile
+    public Sprite lockedSprite;
+    public Sprite seededSprite;
+    public Sprite grownSprite;
 
     [Header("Effects")]
-    public ParticleSystem growParticles;  // Green puff — assign in Inspector
-    
+    public ParticleSystem growParticles;
+
     [Header("Animation")]
-    public float transitionDelay = 0.3f; // Stagger between tiles
+    public float transitionDelay = 0.3f;
 
     private TileState _currentState = TileState.Locked;
+    private BoxCollider2D _collider;
 
     private void Awake()
     {
+        _collider = GetComponent<BoxCollider2D>();
         SetVisual(TileState.Locked);
     }
 
@@ -28,12 +30,12 @@ public class PathTile : MonoBehaviour
     public IEnumerator AnimateGrow(float delay)
     {
         yield return new WaitForSeconds(delay);
-        
+
         // Stage 1: Seeds appear
         SetVisual(TileState.Seeded);
         yield return new WaitForSeconds(0.8f);
 
-        // Stage 2: Grows green
+        // Stage 2: Fully grown -- open the path
         SetVisual(TileState.Grown);
 
         if (growParticles != null)
@@ -50,18 +52,28 @@ public class PathTile : MonoBehaviour
     private void SetVisual(TileState state)
     {
         _currentState = state;
+
         switch (state)
         {
             case TileState.Locked:
                 spriteRenderer.sprite = lockedSprite;
+                SetCollider(true);   // Block the player
                 break;
             case TileState.Seeded:
                 spriteRenderer.sprite = seededSprite;
+                SetCollider(true);   // Still blocked while growing
                 break;
             case TileState.Grown:
                 spriteRenderer.sprite = grownSprite;
+                SetCollider(false);  // Path is open
                 break;
         }
+    }
+
+    private void SetCollider(bool enabled)
+    {
+        if (_collider != null)
+            _collider.enabled = enabled;
     }
 
     public TileState CurrentState => _currentState;

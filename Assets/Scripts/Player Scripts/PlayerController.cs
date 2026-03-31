@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     public PlayerStats playerStats;
 
     private Animator animator;
-    private Vector3 targetPos;
-    private Vector2Int currentGridPos;
-    private bool isMoving;
+    public Vector3 targetPos;
+    public Vector2Int currentGridPos;
+    
 
     // For your Animator parameters
     public bool LeftPress;
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-
+           Debug.Log("PlayerController Start fired. Position: " + transform.position);
         if (!gridManager)
             gridManager = FindFirstObjectByType<GridManager>();
         if (!playerStats)
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPos) < 0.001f)
         {
             transform.position = targetPos;
-            isMoving = false;
+            
             HandleMovementInput();
         }
 
@@ -65,13 +65,13 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("RightPress", RightPress);
             animator.SetBool("UpPress", UpPress);
             animator.SetBool("DownPress", DownPress);
-            animator.SetBool("isMoving", isMoving);
+            
         }
     }
 
     private void HandleMovementInput()
     {
-        if (isMoving) return;
+        
 
         Vector2Int moveDir = Vector2Int.zero;
 
@@ -89,8 +89,7 @@ public class PlayerController : MonoBehaviour
             {
                 currentGridPos += moveDir;
                 targetPos = potentialTarget;
-                isMoving = true;
-
+                
                 // NEW: Update direction floats for the Idle Blend Tree
                 if (animator)
                 {
