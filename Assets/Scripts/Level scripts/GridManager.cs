@@ -15,7 +15,7 @@ public class GridManager : MonoBehaviour
     private Dictionary<Vector2Int, TileType> tiles = new Dictionary<Vector2Int, TileType>();
 
     [Header("Tile Effects")]
-    public float concreteHeatRate = 4f; 
+    public float concreteHeatRate = 10f;
     public float treeCoolRate = -2f;    
 
     public TileType GetTileTypeAtPosition(Vector2Int gridPos)

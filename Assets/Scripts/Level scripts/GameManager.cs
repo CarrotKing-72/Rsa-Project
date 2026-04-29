@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
+    public event Action OnBankUpdated;
     public void SaveSeeds(int amount)
     {
         totalSeedsInBank += amount;
@@ -52,12 +53,29 @@ public class GameManager : MonoBehaviour
     public bool IsPathComplete() => sectionsUnlocked >= totalPathSections;
 
     // Wipes all save data -- called by New Game button
-    public void ResetProgress()
+     public void StartNewGame()
     {
+       
         totalSeedsInBank = 0;
         sectionsUnlocked = 0;
-        SaveProgress();
-        Debug.Log("Progress reset for new game.");
+
+       
+        PlayerPrefs.DeleteKey(KEY_SEEDS);
+        PlayerPrefs.DeleteKey(KEY_SECTIONS);
+        PlayerPrefs.Save();
+
+        
+        PlayerStats stats = FindFirstObjectByType<PlayerStats>();
+        if (stats != null)
+            stats.ResetStats();
+
+        
+        OnBankUpdated?.Invoke();
+
+        Debug.Log("[GameManager] New game started. All progress wiped.");
+
+        
+        SceneManager.LoadScene("Hub");
     }
 
     private void SaveProgress()

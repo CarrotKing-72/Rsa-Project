@@ -1,147 +1,180 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
+    
     [Header("Player Stats")]
-    public float maxHealth = 100f;
-    public float health = 100f;
-    public float temperature = 37f; // Normal body temp
+    public float maxHealth      = 100f;
+    public float health         = 100f;
+    public float temperature    = 37f;   // Normal body temp in Celsius
     public float minTemperature = 30f;
     public float maxTemperature = 45f;
-    private float heatTimer = 0f;
-    [Header("UI References")]
-    public Slider healthSlider;
-    public Slider tempSlider;
 
+    
+    [Header("Heat Damage Settings")]
+    [Tooltip("Temperature must exceed this value before damage starts.")]
+    public float damageTempThreshold = 40f;
+
+    [Tooltip("Flat damage per second the moment you enter the danger zone.")]
+    public float baseDamagePerSecond = 8f;
+
+    [Tooltip("Extra damage added per second of continuous heat exposure.")]
+    public float heatRampPerSecond   = 4f;
+
+    [Tooltip("Maximum damage per second so it never becomes instant death.")]
+    public float maxDamagePerSecond  = 25f;
+
+    [Tooltip("Temperature must drop THIS far below the threshold before damage stops. Prevents flickering.")]
+    public float cooldownTempBuffer  = 0.5f;
+
+    
+    [Header("UI References")]
+    public UnityEngine.UI.Slider healthSlider;
+    public UnityEngine.UI.Slider tempSlider;
+
+    
     [Header("Death Settings")]
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private float deathAnimationDelay = 1.25f;
 
-    private bool deathHandled = false;
-
+    
     public event Action<float> OnHealthChanged;
     public event Action<float> OnTemperatureChanged;
 
+    
+    private float _heatTimer         = 0f;
+    private bool  _isTakingHeatDamage = false;
+    private bool  _deathHandled      = false;
+
+    
     private void Start()
     {
+        
         if (playerAnimator == null)
-        {
-            playerAnimator = GetComponent<Animator>();
-            if (playerAnimator == null)
-            {
-                playerAnimator = GetComponentInChildren<Animator>();
-            }
-        }
+            playerAnimator = GetComponent<Animator>() ?? GetComponentInChildren<Animator>();
 
-        // Subscribe UI update methods to events
-        OnHealthChanged += UpdateHealthUI;
+        
+        OnHealthChanged      += UpdateHealthUI;
         OnTemperatureChanged += UpdateTemperatureUI;
 
-        // Initialize sliders at start
+        
         UpdateHealthUI(health);
         UpdateTemperatureUI(temperature);
     }
 
+    private void Update()
+    {
+        HandleHeatDamage();
+    }
+
+    
     public void ChangeHealth(float amount)
     {
-        if (deathHandled)
-        {
-            return;
-        }
+        if (_deathHandled) return;
 
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         OnHealthChanged?.Invoke(health);
 
         if (health <= 0)
-        {
             HandleDeath();
-        }
-
-
-
     }
 
+    
     public void ChangeTemperature(float amount)
     {
         temperature = Mathf.Clamp(temperature + amount, minTemperature, maxTemperature);
         OnTemperatureChanged?.Invoke(temperature);
     }
+
+    
     public void ResetStats()
     {
-        deathHandled = false;
+        _deathHandled       = false;
+        _heatTimer          = 0f;
+        _isTakingHeatDamage = false;
 
         if (playerAnimator != null)
-        {
             playerAnimator.SetBool("IsDead", false);
-        }
 
-        // Reset Health
         health = maxHealth;
         OnHealthChanged?.Invoke(health);
 
-        // Reset Temperature to normal (37 degrees)
         temperature = 37f;
         OnTemperatureChanged?.Invoke(temperature);
 
-        // CRITICAL: Reset the exponential heat timer so damage starts at base level again
-        heatTimer = 0f;
-
-        Debug.Log("Player Stats Reset for New Level");
-    }
-    private void HandleDeath()
-    {
-        if (deathHandled)
-        {
-            return;
-        }
-
-        deathHandled = true;
-        Debug.Log("Player Died! Returning to Hub...");
-
-        if (playerAnimator != null)
-        {
-            playerAnimator.SetBool("IsDead", true);
-        }
-
-        StartCoroutine(HandleDeathSequence());
+        Debug.Log("[PlayerStats] Stats reset.");
     }
 
-    private IEnumerator HandleDeathSequence()
-    {
-        yield return new WaitForSeconds(deathAnimationDelay);
-
-        SeedInventory inventory = GetComponent<SeedInventory>();
-        if (inventory != null)
-        {
-            inventory.ResetSeeds();
-        }
-
-        SceneManager.LoadScene("Hub");
-    }
     
-    void Update()
+    private void HandleHeatDamage()
     {
-        // If temperature is too high, lose health
-        if (temperature > 41f)
+        
+
+        if (_isTakingHeatDamage)
         {
-            heatTimer += Time.deltaTime;
-            // Damage starts at 2 and increases by 4 every second you stay hot
-            float damagePerSecond = 2f + (heatTimer * 1.5f);
-            ChangeHealth(-Time.deltaTime * damagePerSecond);
+           
+            if (temperature < damageTempThreshold - cooldownTempBuffer)
+            {
+                _isTakingHeatDamage = false;
+                _heatTimer          = 0f;
+                Debug.Log("[PlayerStats] Cooled down. Heat damage stopped.");
+            }
         }
         else
         {
-            heatTimer = 0f; // Reset danger when you reach a tree
+            
+            if (temperature > damageTempThreshold)
+            {
+                _isTakingHeatDamage = true;
+                Debug.Log("[PlayerStats] Overheating! Heat damage started.");
+            }
         }
+
+        // --- Apply damage if we are in the damage state ---
+
+        if (!_isTakingHeatDamage) return;
+
+        _heatTimer += Time.deltaTime;
+
+        // Damage ramps up the longer you stay hot, but is capped so it stays fair
+        float damagePerSecond = Mathf.Min(
+            baseDamagePerSecond + (_heatTimer * heatRampPerSecond),
+            maxDamagePerSecond
+        );
+
+        ChangeHealth(-Time.deltaTime * damagePerSecond);
     }
 
+    
+    private void HandleDeath()
+    {
+        if (_deathHandled) return;
+        _deathHandled = true;
 
+        Debug.Log("[PlayerStats] Player died. Returning to Hub...");
 
-    // UI update methods
+        if (playerAnimator != null)
+            playerAnimator.SetBool("IsDead", true);
+
+        StartCoroutine(DeathSequence());
+    }
+
+    private IEnumerator DeathSequence()
+    {
+        yield return new WaitForSeconds(deathAnimationDelay);
+
+        // Drop seeds on death so runs feel punishing but recoverable
+        SeedInventory inventory = GetComponent<SeedInventory>();
+        if (inventory != null)
+            inventory.ResetSeeds();
+
+        SceneManager.LoadScene("Hub");
+    }
+
+    
     private void UpdateHealthUI(float currentHealth)
     {
         if (healthSlider)
@@ -154,4 +187,3 @@ public class PlayerStats : MonoBehaviour
             tempSlider.value = (currentTemp - minTemperature) / (maxTemperature - minTemperature);
     }
 }
-   

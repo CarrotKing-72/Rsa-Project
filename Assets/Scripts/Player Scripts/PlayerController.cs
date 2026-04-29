@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public LayerMask obstacleLayer;
 
+    [Header("Movement Mode")]
+    public bool useGridStepMovement = true; // TRUE in levels, FALSE in hub/free areas
+
     [Header("References")]
     public GridManager gridManager;
     public PlayerStats playerStats;
@@ -70,41 +73,45 @@ public class PlayerController : MonoBehaviour
     }
 
     private void HandleMovementInput()
+{
+    Vector2Int moveDir = Vector2Int.zero;
+
+    if (useGridStepMovement)
     {
-        
-
-        Vector2Int moveDir = Vector2Int.zero;
-
-        if (Input.GetKeyDown(KeyCode.W)) moveDir = Vector2Int.up;
+        // Original level behaviour -- one press = one tile
+        if (Input.GetKeyDown(KeyCode.W))      moveDir = Vector2Int.up;
         else if (Input.GetKeyDown(KeyCode.S)) moveDir = Vector2Int.down;
         else if (Input.GetKeyDown(KeyCode.A)) moveDir = Vector2Int.left;
         else if (Input.GetKeyDown(KeyCode.D)) moveDir = Vector2Int.right;
-
-        if (moveDir != Vector2Int.zero)
-        {
-            Vector3 potentialTarget = targetPos + (Vector3)(Vector2)moveDir;
-            Collider2D hit = Physics2D.OverlapBox(potentialTarget, new Vector2(0.8f, 0.8f), 0, obstacleLayer);
-
-            if (hit == null)
-            {
-                currentGridPos += moveDir;
-                targetPos = potentialTarget;
-                
-                // NEW: Update direction floats for the Idle Blend Tree
-                if (animator)
-                {
-                    animator.SetFloat("LastMoveX", moveDir.x);
-                    animator.SetFloat("LastMoveY", moveDir.y);
-                }
-
-                HandleTileOnStep(currentGridPos);
-            }
-            else
-            {
-                Debug.Log("Blocked by: " + hit.name);
-            }
-        }
     }
+    else
+    {
+        // Hub behaviour -- hold to move, but still tile-to-tile so it stays grid-aligned
+        if (Input.GetKey(KeyCode.W))      moveDir = Vector2Int.up;
+        else if (Input.GetKey(KeyCode.S)) moveDir = Vector2Int.down;
+        else if (Input.GetKey(KeyCode.A)) moveDir = Vector2Int.left;
+        else if (Input.GetKey(KeyCode.D)) moveDir = Vector2Int.right;
+    }
+
+    if (moveDir == Vector2Int.zero) return;
+
+    Vector3 potentialTarget = targetPos + (Vector3)(Vector2)moveDir;
+    Collider2D hit = Physics2D.OverlapBox(potentialTarget, new Vector2(0.8f, 0.8f), 0, obstacleLayer);
+
+    if (hit == null)
+    {
+        currentGridPos += moveDir;
+        targetPos = potentialTarget;
+
+        if (animator)
+        {
+            animator.SetFloat("LastMoveX", moveDir.x);
+            animator.SetFloat("LastMoveY", moveDir.y);
+        }
+
+        HandleTileOnStep(currentGridPos);
+    }
+}
 
     private void ApplyTileEffectPerSecond()
     {

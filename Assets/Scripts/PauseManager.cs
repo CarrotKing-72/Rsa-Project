@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
 using System.Collections;
-
-public class MainMenuController : MonoBehaviour
+public class PauseManager : MonoBehaviour
 {
-    [Header("Panels")]
-    public GameObject mainPanel;
-    public GameObject subMenuPanel;
+    [Header("UI")]
+    [SerializeField] private GameObject pauseMenuPanel;
+
     public GameObject settingsPanel;
 
     [Header("Settings UI")]
@@ -17,65 +16,56 @@ public class MainMenuController : MonoBehaviour
 
     private const string KEY_MUSIC = "musicVolume";
     private const string KEY_SFX   = "sfxVolume";
+    
+    private bool _isPaused = false;
 
-    private void Start()
+    private void Update()
     {
-        // Always boot to main panel
-        ShowPanel(mainPanel);
-
-        // Restore saved audio prefs
-        if (musicSlider) musicSlider.value = PlayerPrefs.GetFloat(KEY_MUSIC, 1f);
-        if (sfxSlider)   sfxSlider.value   = PlayerPrefs.GetFloat(KEY_SFX, 1f);
+        if (Input.GetKeyDown(KeyCode.Escape))
+            TogglePause();
     }
 
-    // ---- Main Panel ----
-
-    public void OnPlayPressed()
+    // Called by Escape key or a pause button on screen
+    public void TogglePause()
     {
-        StartCoroutine(FadeToPanel(mainPanel, subMenuPanel));
+        _isPaused = !_isPaused;
+        pauseMenuPanel.SetActive(_isPaused);
+
+        // timeScale 0 freezes everything -- Update, physics, animations all stop
+        // your UI buttons still work because they run off real time not game time
+        Time.timeScale = _isPaused ? 0f : 1f;
     }
 
+    // Wire to your Resume button
+    public void Resume()
+    {
+        _isPaused = false;
+        pauseMenuPanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    // Wire to your Quit to Hub button
+    public void QuitToHub()
+    {
+        // ALWAYS reset timeScale before loading a new scene
+        // if you forget this, the Hub will load frozen and nothing will move
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Hub");
+    }
+
+    // Wire to your Quit to Main Menu button if you want one
+    public void QuitToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+    
+    
     public void OnSettingsPressed()
     {
-        StartCoroutine(FadeToPanel(mainPanel, settingsPanel));
+        StartCoroutine(FadeToPanel(pauseMenuPanel, settingsPanel));
     }
-
-    public void OnQuitPressed()
-    {
-        Debug.Log("Quitting...");
-        Application.Quit();
-    }
-
-    // ---- Sub Menu Panel ----
-
-    public void OnContinuePressed()
-    {
-        // GameManager already loaded save in Awake -- just go to Hub
-        SceneManager.LoadScene("Hub");
-    }
-
-   public void OnNewGamePressed()
-{
-    if (GameManager.Instance != null)
-    {
-        GameManager.Instance.StartNewGame(); // this already loads the Hub, that's all you need
-    }
-    else
-    {
-        // Fallback if somehow GameManager doesn't exist yet
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-        SceneManager.LoadScene("Hub");
-    }
-}
-
-    public void OnSubMenuBackPressed()
-    {
-        StartCoroutine(FadeToPanel(subMenuPanel, mainPanel));
-    }
-
-    // ---- Settings Panel ----
-
+    
     public void OnMusicVolumeChanged(float value)
     {
         PlayerPrefs.SetFloat(KEY_MUSIC, value);
@@ -89,12 +79,16 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    
     public void OnSettingsBackPressed()
     {
-        StartCoroutine(FadeToPanel(settingsPanel, mainPanel));
+        StartCoroutine(FadeToPanel(settingsPanel, pauseMenuPanel));
     }
-
-    // ---- Panel Transitions ----
+    // Called when this object is destroyed (scene unloads) -- safety net
+    private void OnDestroy()
+    {
+        Time.timeScale = 1f;
+    }
 
     private IEnumerator FadeToPanel(GameObject from, GameObject to)
     {
@@ -112,7 +106,7 @@ public class MainMenuController : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            elapsed  += Time.deltaTime;
+            elapsed  += Time.unscaledDeltaTime;
             cg.alpha  = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
             yield return null;
         }
@@ -121,8 +115,10 @@ public class MainMenuController : MonoBehaviour
 
     private void ShowPanel(GameObject panel)
     {
-        if (mainPanel)     mainPanel.SetActive(panel == mainPanel);
-        if (subMenuPanel)  subMenuPanel.SetActive(panel == subMenuPanel);
+        if (pauseMenuPanel)     pauseMenuPanel.SetActive(panel == pauseMenuPanel);
+        
         if (settingsPanel) settingsPanel.SetActive(panel == settingsPanel);
     }
+
+
 }
