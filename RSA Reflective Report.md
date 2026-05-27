@@ -14,7 +14,7 @@ In my game Asphalt Oasis, you play as a dog that must navigate a concrete city, 
 
 I believe this game was the right medium to highlight these issues, as it targets audiences aged 12–22 who are connected to the internet and understand these issues. Still, they may be unaware of their real impact or feel that anything they do will not make a difference. This game aims to provide them with agency and to show them that even small actions, such as planting a single seed at a time, can create tangible change (Squire, 2021).
 
-![Figure 1: Image of the game's park area with the pathway locked](images/Figure_1.png)
+![Figure 1: Image of the game's park area with the pathway locked](.images/Figure_1.png)
 
 *Figure 1: Image of the game's park area with the pathway locked*
 
@@ -26,7 +26,7 @@ Before I started any work on the game, I planned how I would approach developmen
 
 **Phase 1** - I established the core game systems. Tile-by-tile grid movement via a `PlayerController` script, and the temperature and health system in my `PlayerStats` script that used C# events, so my UI could react to stat changes without being tightly coupled to the player scripts (see Figure 2).
 
-![Figure 2: Early prototype of the game with a small level and basic health and temperature bars](images/Figure_2.png)
+![Figure 2: Early prototype of the game with a small level and basic health and temperature bars](.images/Figure_2.png)
 
 *Figure 2: Early prototype of the game with a small level and basic health and temperature bars*
 
@@ -37,7 +37,7 @@ public event Action<float> OnTemperatureChanged;
 
 I created an early version of my `LevelGenerator` script that places tiles procedurally (see Figure 3). This meant that the core loop of the game was established before moving on to extra features and visuals (Schell, 2018).
 
-![Figure 3: A more advanced level prototype that's larger and showcases a purple seed item in its early stages](images/Figure_3.png)
+![Figure 3: A more advanced level prototype that's larger and showcases a purple seed item in its early stages](.images/Figure_3.png)
 
 *Figure 3: A more advanced level prototype that's larger and showcases a purple seed item in its early stages*
 
@@ -53,7 +53,7 @@ if (Instance == null)
 else { Destroy(gameObject); }
 ```
 
-![Figure 4: Image of the game's hub area with seed count and directions to the park and level](images/Figure_4.png)
+![Figure 4: Image of the game's hub area with seed count and directions to the park and level](.images/Figure_4.png)
 
 *Figure 4: Image of the game's hub area with seed count and directions to the park and level*
 
@@ -67,7 +67,7 @@ Now that you could collect seeds in the game and plant them to unlock your path 
 
 **Phase 3** — This was the final phase of production and development before release. Here, I added the main and pause menus to the game (see Figure 6) and included all the small UI elements that bring the game together, such as the seed counter and the red damage vignette that appears when you start to lose health.
 
-![Figure 6: Image of the game's main menu and logo](images/Figure_6.png)
+![Figure 6: Image of the game's main menu and logo](.images/Figure_6.png)
 
 *Figure 6: Image of the game's main menu and logo*
 
@@ -103,13 +103,13 @@ if (temperature < damageTempThreshold - cooldownTempBuffer)
 }
 ```
 
-![Figure 7: Image displaying the red health vignette that's applied when the player is too hot and takes damage](images/Figure_7.png)
+![Figure 7: Image displaying the red health vignette that's applied when the player is too hot and takes damage](.images/Figure_7.png)
 
 *Figure 7: Image displaying the red health vignette that's applied when the player is too hot and takes damage*
 
 **Hub seed counter not updating** — `HubUISync` was reading the seed count from my `GameManager` script only once at the start, so it did not update when the seed count changed, as it ran only once per game. This was fixed by having the script listen to the `OnBankUpdated` event and refresh the count whenever the seed count changed (see Figure 8).
 
-![Figure 8: Image displaying the updated seed bank UI in the hub](images/Figure_8.png)
+![Figure 8: Image displaying the updated seed bank UI in the hub](.images/Figure_8.png)
 
 *Figure 8: Image displaying the updated seed bank UI in the hub*
 
